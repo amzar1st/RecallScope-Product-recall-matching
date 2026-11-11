@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Compare a product lot against pinned FDA recall notices, with verifiable GenLayer decisions.">
+<title>RecallScope — Product recall matching</title>
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<header class="site-header"><div class="wrap masthead">
+  <a class="brand" href="./"><span class="mark" aria-hidden="true">◎</span> RecallScope</a>
+  <a id="network" class="network" target="_blank" rel="noopener">GenLayer StudioNet ↗</a>
+</div></header>
+<main class="wrap">
+  <section class="intro">
+    <p class="eyebrow">U.S. FDA RECALL RECORDS</p>
+    <h1>Is this lot covered<br>by the recall?</h1>
+    <p>Check a printed lot code against the original and expanded notices for the Medline ReNewal ViewFlex Xtra ICE Catheter.</p>
+  </section>
+  <div class="workspace">
+    <section class="panel lookup" aria-labelledby="lookup-title">
+      <h2 id="lookup-title">Look up a lot</h2>
+      <form id="lookup">
+        <label for="model">Product model</label>
+        <input id="model" value="D087031RH" readonly>
+        <label for="lot">Printed lot code</label>
+        <input id="lot" name="lot" required maxlength="9" pattern="[Ee][Pp][0-9]{6}[A-Za-z]?" placeholder="e.g. EP250324" autocomplete="off" spellcheck="false">
+        <label for="stage">Notice set</label>
+        <select id="stage" name="stage"><option value="expanded">Original + expansion</option><option value="original">Original only</option></select>
+        <button class="primary" type="submit">Look up finalized result</button>
+      </form>
+      <div class="examples"><span>Try an example</span><button data-lot="EP250324">EP250324</button><button data-lot="EP250325">EP250325</button></div>
+    </section>
+    <section class="panel result" aria-labelledby="result-title">
+      <h2 id="result-title">Recall decision</h2>
+      <p id="status" class="status" role="status">Enter a lot code or select an example.</p>
+      <div id="result"></div>
+      <details id="run">
+        <summary>Run a new check in Studio</summary>
+        <p>Open the deployed contract in Studio and run <code>check_lot</code> in Normal (Full Consensus) mode. Sign with the built-in Studio account, then paste the transaction hash below.</p>
+        <pre id="args"></pre>
+        <a id="studio" href="https://studio.genlayer.com/run-debug" target="_blank" rel="noopener">Open GenLayer Studio ↗</a>
+        <a href="https://github.com/amzar1st/RecallScope-Product-recall-matching/blob/main/contracts/recall_scope.py" target="_blank" rel="noopener">Contract source ↗</a>
+      </details>
+      <form id="track" class="track">
+        <label for="hash">Track a Studio transaction</label>
+        <div class="track-row"><input id="hash" required pattern="0x[0-9a-fA-F]{64}" placeholder="Paste transaction hash" spellcheck="false" autocomplete="off"><button type="submit">Track</button></div>
+        <p id="tx-status" role="status"></p>
+      </form>
+    </section>
+  </div>
+  <section class="sources">
+    <h2>About this lookup</h2>
+    <p>This deployment checks two historical FDA records for one model. Validators fetch and verify the pinned scope snapshots. The notices list affected lot codes directly. They give no separate manufacturing-date criterion. An outside-scope decision only applies to the selected notices. Check the FDA records for current instructions and updates.</p>
+    <ul>
+      <li><a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfres/res.cfm?id=215768">Original FDA record Z-2613-2025 ↗</a></li>
+      <li><a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfres/res.cfm?id=218129">FDA expansion record Z-1323-2026 ↗</a></li>
+    </ul>
+  </section>
+</main>
+<footer class="wrap"><a href="https://github.com/amzar1st/RecallScope-Product-recall-matching">Source and verification ↗</a><span>United States · FDA medical device recall records</span></footer>
+</body>
+</html>
