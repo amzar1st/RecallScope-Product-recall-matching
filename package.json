@@ -1,0 +1,32 @@
+{
+  "name": "recallscope",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "python -m unittest discover -s tests && node --test tests/*.test.mjs",
+    "build": "esbuild src/app.mjs --bundle --format=esm --minify --outfile=dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amzar1st/RecallScope-Product-recall-matching.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/amzar1st/RecallScope-Product-recall-matching/issues"
+  },
+  "homepage": "https://github.com/amzar1st/RecallScope-Product-recall-matching#readme",
+  "dependencies": {
+    "genlayer-js": "1.1.8"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  },
+  "private": true
+}
