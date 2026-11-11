@@ -22,3 +22,11 @@ test('empty on-chain result and mismatched result identity', () => {
   assert.throws(() => parseResult(record, 'EP250325', 'expanded'));
   assert.throws(() => parseResult(record, 'EP250324', 'original'));
 });
+
+test('ignores a Studio bookkeeping idle receipt after a successful write', () => {
+  const tx = {status:'FINALIZED', consensus_data:{leader_receipt:[
+    {execution_result:'SUCCESS', result:{status:'return'}},
+    {execution_result:'ERROR', result:{payload:'idle'}},
+  ]}};
+  assert.equal(transactionState(tx).outcome, 'finalized');
+});
