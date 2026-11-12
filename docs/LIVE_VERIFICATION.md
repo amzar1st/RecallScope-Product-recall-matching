@@ -46,3 +46,11 @@ The suite checks exact lot membership, positive matches with a missing secondary
 ## Limits
 
 The records are historical snapshots for one model. A material change in official scope requires a new reviewed snapshot/version. The project does not perform a catalog-wide search. Signing occurs in the separate Studio tab, and StudioNet may reset.
+
+## Public browser verification
+
+On 2026-11-12 the public site displayed the finalized covered and outside-scope demo records, and distinguished the previously rejected malformed transaction from a successful finalized check. A second built-in Studio account opened the contract through the site's import link and submitted EP250325 against the original notice. The public tracker displayed `ACCEPTED` while awaiting finalization, then `FINALIZED` and refreshed the original-only decision to `OUTSIDE_NOTICE_SCOPE`.
+
+- [Public original-only decision](https://recallscope.tinymule33.chatgpt.site/?lot=EP250325&stage=original)
+- [Finalized browser lifecycle receipt](https://explorer-studio.genlayer.com/tx/0x1d502d5710241536cecab73044706ae4396ceec8af849437838d4856d4fcb93e)
+- Decision SHA-256 — `372b37ba87adda408bcf24992190ad237d95dd0007f52dc9d2050e4cdc81a19d`
